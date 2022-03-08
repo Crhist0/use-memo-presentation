@@ -62,7 +62,7 @@ export default function HorizontalLinearStepper(props) {
         </React.Fragment>
       ) : (
         <Box>
-          <Typography variant="body1" align="justify" sx={{ mt: 2, mb: 1 }}>
+          <Typography align="justify" sx={{ mt: 2, mb: 1, fontSize: '1.3rem' }}>
             {props.text[activeStep]}
           </Typography>
           <Box

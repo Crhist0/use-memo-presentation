@@ -1,12 +1,12 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react';
 
 const initialAuthState = {
   authStateLoading: true,
-  access_token: window.localStorage.getItem("access_token") || ""
+  access_token: window.localStorage.getItem('access_token') || '',
 };
 
 export const AuthContext = createContext({
-  authState: initialAuthState
+  authState: initialAuthState,
 });
 
 export const AuthContextProvider = ({ children }) => {
@@ -14,32 +14,40 @@ export const AuthContextProvider = ({ children }) => {
 
   // Updating access token in localStorage
   const updateAuthStateContext = (access_token, token_gen_time) => {
-    window.localStorage.setItem("access_token", access_token);
+    window.localStorage.setItem('access_token', access_token);
 
-    if (token_gen_time) window.localStorage.setItem("token_gen_time", token_gen_time);
+    if (token_gen_time)
+      window.localStorage.setItem('token_gen_time', token_gen_time);
 
     setAuthState({
       authStateLoading: false,
-      access_token
+      access_token,
     });
   };
   /* Remove access_token from local storage and logout user */
   const logOutUser = () => {
-    if (window.localStorage.getItem("access_token") !== null) {
-      window.localStorage.removeItem("access_token");
+    if (window.localStorage.getItem('access_token') !== null) {
+      window.localStorage.removeItem('access_token');
     }
     setAuthState({
-      access_token: "",
-      authStateLoading: false
+      access_token: '',
+      authStateLoading: false,
     });
   };
 
   // Check if auth is valid
   const checkAuthState = () => {
-    const access_token = window.localStorage.getItem("access_token");
-    const tokenGeneratedTime = parseInt(localStorage.getItem("token_gen_time"), 10);
+    const access_token = window.localStorage.getItem('access_token');
+    const tokenGeneratedTime = parseInt(
+      localStorage.getItem('token_gen_time'),
+      10
+    );
 
-    if (access_token !== null && tokenGeneratedTime && tokenGeneratedTime + 1400 * 60 * 1000 >= new Date().getTime()) {
+    if (
+      access_token !== null &&
+      tokenGeneratedTime &&
+      tokenGeneratedTime + 1400 * 60 * 1000 >= new Date().getTime()
+    ) {
       updateAuthStateContext(access_token);
     } else {
       logOutUser();
@@ -47,7 +55,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   //  Logout user
-  const logInUser = access_token => {
+  const logInUser = (access_token) => {
     const token_gen_time = new Date().getTime();
     updateAuthStateContext(access_token, token_gen_time);
   };
@@ -60,7 +68,7 @@ export const AuthContextProvider = ({ children }) => {
     checkAuthState,
     logInUser,
     logOutUser,
-    isLoggedIn
+    isLoggedIn,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

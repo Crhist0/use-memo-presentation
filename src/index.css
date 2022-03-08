@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 body {
   margin: 0;
@@ -6,10 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(242, 242, 244, 0.7);
-}
+} */
 
 /* Custom ScrollBar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 9px;
   height: 9px;
 }
@@ -28,4 +28,4 @@ body {
   background: #b9b9b9;
 }
 
-/* Custom ScrollBar */
+Custom ScrollBar */

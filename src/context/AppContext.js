@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 export const AppContext = createContext();
 
@@ -9,7 +9,7 @@ export const AppContext = createContext();
 =============*/
 
 export const AppContextProvider = ({ children }) => {
-  const [state, setState] = useState("");
+  const [state, setState] = useState('');
 
   const value = { state, setState };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
